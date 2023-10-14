@@ -1,0 +1,57 @@
+package com.mili.coloringapp
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.GridView
+import androidx.appcompat.app.AppCompatActivity
+
+
+class MainActivity : AppCompatActivity() {
+    // on below line we are creating variables for grid view and course list
+    lateinit var courseGRV: GridView
+    lateinit var courseList: List<GridViewModal>
+    var logos = intArrayOf(
+        R.drawable.image1,
+        R.drawable.image2,
+        R.drawable.image3,
+        R.drawable.image4,
+        R.drawable.image5
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        // initializing variables of grid view with their ids.
+        courseGRV = findViewById(R.id.idGRV)
+        courseList = ArrayList<GridViewModal>()
+
+        // on below line we are adding data to
+        // our course list with image and course name.
+        courseList = courseList + GridViewModal("1", R.drawable.image1)
+        courseList = courseList + GridViewModal("2", R.drawable.image2)
+        courseList = courseList + GridViewModal("3", R.drawable.image3)
+        courseList = courseList + GridViewModal("4", R.drawable.image4)
+        courseList = courseList + GridViewModal("5", R.drawable.image5)
+
+        // on below line we are initializing our course adapter
+        // and passing course list and context.
+        val courseAdapter = GridRVAdapter(courseList = courseList, this@MainActivity)
+
+        // on below line we are setting adapter to our grid view.
+        courseGRV.adapter = courseAdapter
+
+        // on below line we are adding on item
+        // click listener for our grid view.
+        courseGRV.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            // set an Intent to Another Activity
+            val intent = Intent(this@MainActivity, SecondActivity::class.java)
+            intent.putExtra("image", logos.get(position)) // put image data in Intent
+            startActivity(intent) // start Intent
+
+        }
+
+    }
+}
+

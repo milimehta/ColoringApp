@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".SecondActivity">
+
+    <codes.side.andcolorpicker.hsl.HSLColorPickerSeekBar
+        android:id="@+id/hueSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hslColoringMode="pure"
+        app:hslMode="hue" />
+
+    <codes.side.andcolorpicker.alpha.HSLAlphaColorPickerSeekBar
+        android:id="@+id/alphaSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/selectedImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/coloring_image"
+        android:src="@drawable/image1" />
+
+
+</LinearLayout>
